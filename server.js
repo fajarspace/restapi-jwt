@@ -1,54 +1,73 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const session = require("express-session");
+const db = require("./config/Database");
+const dbPost = require("./models/dbPost");
+const authRoute = require("./routes/authRoute");
+const userRoute = require("./routes/userRoute");
+const dosenRoute = require("./routes/dosenRoute");
+const generateTokenRoute = require("./routes/generateTokenRoute");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const sessionStore = new SequelizeStore({
+  db: db,
+});
 
+// dbPost();
+
+// db.authenticate()
+//   .then(() => {
+//     console.log("Database Connected...");
+//     return tokenModel.sync();
+//   })
+//   .then(() => {
+//     console.log("DB synchronized...");
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
+
+dotenv.config();
 const app = express();
-const PORT = 4000;
-const SECRET_KEY = "hehehe";
+
+app.set("trust proxy", 1);
+app.use(
+  session({
+    secret: process.env.SESS_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStore,
+    proxy: true,
+    name: "informatika_upb_proxy",
+    cookie: {
+      secure: "auto",
+      // httpOnly: false,
+      // sameSite: "none",
+    },
+  })
+);
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.ORIGIN,
+  })
+);
 
 app.use(express.json());
 
-const dosenData = [
-  { id: 1, name: "Alfiyan, S.Kom" },
-  { id: 2, name: "Edora, M.Pd" },
-  { id: 3, name: "M. Najamuddin, M.Kom" },
-  { id: 4, name: "Wahyu Hadikristanto, M.Kom" },
-];
-
-const authenticateToken = (req, res, next) => {
-  const token = req.header("Authorization");
-
-  if (!token) {
-    return res.sendStatus(401);
-  }
-
-  jwt.verify(token, SECRET_KEY, (err, user) => {
-    if (err) {
-      return res.sendStatus(403);
-    }
-    req.user = user;
-    next();
-  });
-};
-
-app.post("/login", (req, res) => {
-  const { username, password } = req.body;
-
-  if (username === "fajar" && password === "123") {
-    const user = { username };
-
-    const token = jwt.sign(user, SECRET_KEY, { expiresIn: "60s" });
-
-    res.json({ token });
-  } else {
-    res.status(401).send("Invalid credentials");
-  }
+// Route - Welcome Page
+app.get("/api", (req, res) => {
+  res.send(
+    "<h1>Selamat datang di API Informatika UPB!</h1><p>Lihat dokumentasi nya di <a href='https://api.informatikaupb.com/'>https://api.informatikaupb.com/</a></p>"
+  );
 });
+app.use(authRoute);
+app.use(userRoute);
+app.use(dosenRoute);
+app.use(generateTokenRoute);
 
-app.get("/dosen", authenticateToken, (req, res) => {
-  // Hanya mengizinkan akses jika token valid
-  res.json(dosenData);
-});
+// sessionStore.sync();
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app.listen(process.env.PORT, () =>
+  console.log(`Server berjalan di port '${process.env.PORT}'`)
+);
