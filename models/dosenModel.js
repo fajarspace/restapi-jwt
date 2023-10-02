@@ -1,6 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const db = require("../config/Database.js");
-const userModel = require("./userModel.js");
+const db = require("../config/Database");
 
 const dosenModel = db.define(
   "dosen",
@@ -16,7 +15,7 @@ const dosenModel = db.define(
     nidn: {
       type: DataTypes.STRING,
     },
-    nama: {
+    nama_dosen: {
       type: DataTypes.STRING,
     },
     email: {
@@ -33,8 +32,5 @@ const dosenModel = db.define(
     freezeTableName: true,
   }
 );
-
-userModel.hasMany(dosenModel);
-dosenModel.belongsTo(userModel, { foreignKey: "userId" });
 
 module.exports = dosenModel;

@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const db = require("../config/Database");
+const db = require("../config/Database.js");
 
-const userModel = db.define(
+const Users = db.define(
   "users",
   {
     uuid: {
@@ -14,33 +14,15 @@ const userModel = db.define(
     },
     nama: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-        len: [3, 100],
-      },
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-        isEmail: true,
-      },
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
     },
-    role: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
+    refresh_token: {
+      type: DataTypes.TEXT,
     },
   },
   {
@@ -48,4 +30,4 @@ const userModel = db.define(
   }
 );
 
-module.exports = userModel;
+module.exports = Users;
