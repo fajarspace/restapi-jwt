@@ -15,12 +15,12 @@ const {
   getAllPerkuliahan,
   getPerkuliahanByKelas,
   createPerkuliahan,
-} = require("../controllers/perkuliahan.js");
+} = require("../controllers/perkuliahanController.js");
 const {
   getAllMatkul,
   createMatkul,
   getMatkulById,
-} = require("../controllers/matkul.js");
+} = require("../controllers/matkulController.js");
 const router = express.Router();
 
 router.get("/api/users", verifyToken, getUsers);
