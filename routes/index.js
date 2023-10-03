@@ -4,9 +4,9 @@ const {
   Register,
   Login,
   Logout,
-} = require("../controllers/userController.js");
+} = require("../controllers/refreshtoken");
 const { verifyToken } = require("../middleware/VerifyToken.js");
-const { refreshToken } = require("../controllers/refreshToken.js");
+const { refreshToken } = require("../controllers/refreshtoken.js");
 const { getAllDosen, getDosenById } = require("../controllers/dosen.js");
 const {
   getAllPerkuliahan,
