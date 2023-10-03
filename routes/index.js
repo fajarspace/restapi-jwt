@@ -15,7 +15,7 @@ const {
   getAllPerkuliahan,
   getPerkuliahanByKelas,
   createPerkuliahan,
-} = require("../controllers/perkuliahanController.js");
+} = require("../controllers/kuliahController.js");
 const {
   getAllMatkul,
   createMatkul,
