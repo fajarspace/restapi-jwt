@@ -1,4 +1,4 @@
-const dosenModel = require("../models/DosenModel");
+const dosenModel = require("../models/dosenModel");
 
 exports.getAllDosen = async (req, res) => {
   try {
