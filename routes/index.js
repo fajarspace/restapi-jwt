@@ -17,7 +17,7 @@ const {
   getAllMatkul,
   createMatkul,
   getMatkulById,
-} = require("../controllers/MatkulController.js");
+} = require("../controllers/Matkul.js");
 const router = express.Router();
 
 router.get("/api/users", verifyToken, getUsers);
