@@ -4,7 +4,7 @@ const {
   Register,
   Login,
   Logout,
-} = require("../controllers/Users.js");
+} = require("../controllers/UserController.js");
 const { verifyToken } = require("../middleware/VerifyToken.js");
 const { refreshToken } = require("../controllers/RefreshToken.js");
 const { getAllDosen, getDosenById } = require("../controllers/Dosen.js");

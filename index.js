@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const db = require("./config/Database.js");
+// const db = require("./config/Database.js");
 // const dosenModel = require("./models/DosenModel.js");
 const router = require("./routes/index.js");
 
@@ -14,12 +14,12 @@ const PORT = process.env.PORT || 4000;
 async function startServer() {
   // await db.sync();
 
-  try {
-    await db.authenticate();
-    console.log("Database Connected...");
-  } catch (error) {
-    console.error(error);
-  }
+  // try {
+  //   await db.authenticate();
+  //   console.log("Database Connected...");
+  // } catch (error) {
+  //   console.error(error);
+  // }
 
   const corsOptions = {
     origin: true,
