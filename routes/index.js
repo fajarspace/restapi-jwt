@@ -7,10 +7,7 @@ const {
 } = require("../controllers/UserController");
 const { verifyToken } = require("../middleware/VerifyToken.js");
 const { refreshToken } = require("../controllers/RefreshToken.js");
-const {
-  getAllDosen,
-  getDosenById,
-} = require("../controllers/DosenController.js");
+const { getAllDosen, getDosenById } = require("../controllers/Dosen.js");
 const {
   getAllPerkuliahan,
   getPerkuliahanByKelas,
