@@ -22,7 +22,7 @@ async function startServer() {
   }
 
   const corsOptions = {
-    origin: "https://dev.informatikaupb.com",
+    origin: true,
     credentials: true, // Enable credentials (e.g., cookies)
   };
 
