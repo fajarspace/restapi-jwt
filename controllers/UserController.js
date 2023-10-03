@@ -1,10 +1,10 @@
 const bcrypt = require("bcryptjs");
-const UserModel = require("./../models/UserModel");
+const userModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 
 exports.getUsers = async (req, res) => {
   try {
-    const users = await UserModel.findAll({
+    const users = await userModel.findAll({
       attributes: ["uuid", "nama", "email"],
     });
     res.json(users);
@@ -28,7 +28,7 @@ exports.Register = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, saltRounds);
 
     // Create a new user with the hashed password
-    await UserModel.create({
+    await userModel.create({
       nama: nama,
       email: email,
       password: hashPassword,
@@ -43,7 +43,7 @@ exports.Register = async (req, res) => {
 
 exports.Login = async (req, res) => {
   try {
-    const user = await UserModel.findAll({
+    const user = await userModel.findAll({
       where: {
         email: req.body.email,
       },
@@ -79,7 +79,7 @@ exports.Login = async (req, res) => {
       }
     );
 
-    await UserModel.update(
+    await userModel.update(
       { refresh_token: refreshToken },
       {
         where: {
@@ -103,14 +103,14 @@ exports.Login = async (req, res) => {
 exports.Logout = async (req, res) => {
   const refreshToken = req.cookies.refreshToken;
   if (!refreshToken) return res.sendStatus(204);
-  const user = await UserModel.findAll({
+  const user = await userModel.findAll({
     where: {
       refresh_token: refreshToken,
     },
   });
   if (!user[0]) return res.sendStatus(204);
   const userId = user[0].id;
-  await UserModel.update(
+  await userModel.update(
     { refresh_token: null },
     {
       where: {

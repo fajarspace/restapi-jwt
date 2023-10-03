@@ -1,11 +1,11 @@
-const UserModel = require("../models/UserModel");
+const userModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 
 exports.refreshToken = async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken;
     if (!refreshToken) return res.sendStatus(401);
-    const user = await UserModel.findAll({
+    const user = await userModel.findAll({
       where: {
         refresh_token: refreshToken,
       },
