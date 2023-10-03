@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const db = require("../config/Database.js");
 
-const userModel = db.define(
+const UserModel = db.define(
   "users",
   {
     uuid: {
@@ -30,4 +30,4 @@ const userModel = db.define(
   }
 );
 
-module.exports = userModel;
+module.exports = UserModel;
