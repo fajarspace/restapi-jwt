@@ -26,7 +26,7 @@ router.post("/api/login", Login);
 router.get("/api/token", refreshToken);
 router.delete("/api/logout", Logout);
 
-router.get("/api/dosen", verifyToken, getAllDosen);
+router.get("/api/dosen", getAllDosen);
 router.get("/api/dosen/:uuid", verifyToken, getDosenById);
 
 router.get("/api/matkul", verifyToken, getAllMatkul);
