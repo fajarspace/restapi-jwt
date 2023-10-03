@@ -10,17 +10,17 @@ const { refreshToken } = require("../controllers/RefreshToken.js");
 const {
   getAllDosen,
   getDosenById,
-} = require("../controllers/dosenController.js");
+} = require("../controllers/DosenController.js");
 const {
   getAllPerkuliahan,
   getPerkuliahanByKelas,
   createPerkuliahan,
-} = require("../controllers/kuliahController.js");
+} = require("../controllers/PerkuliahanController.js");
 const {
   getAllMatkul,
   createMatkul,
   getMatkulById,
-} = require("../controllers/matkulController.js");
+} = require("../controllers/MatkulController.js");
 const router = express.Router();
 
 router.get("/api/users", verifyToken, getUsers);

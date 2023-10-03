@@ -1,6 +1,6 @@
-const matkulModel = require("../models/matakuliah");
-const dosenModel = require("../models/dosen");
-const perkuliahanModel = require("../models/perkuliahan");
+const matkulModel = require("../models/MatkulModel");
+const dosenModel = require("../models/DosenModel");
+const perkuliahanModel = require("../models/PerkuliahanModel");
 
 exports.getAllPerkuliahan = async (req, res) => {
   try {

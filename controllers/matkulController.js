@@ -1,4 +1,4 @@
-const matkulModel = require("../models/matakuliah");
+const matkulModel = require("../models/MatkulModel");
 
 exports.getAllMatkul = async (req, res) => {
   try {
