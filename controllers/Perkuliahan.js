@@ -1,4 +1,4 @@
-const matkulModel = require("../models/matkulModel");
+const matkulModel = require("../models/matakuliahModel");
 const dosenModel = require("../models/dosenModel");
 const perkuliahanModel = require("../models/perkuliahanModel");
 

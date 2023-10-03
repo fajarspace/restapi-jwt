@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const db = require("../config/Database");
-const matkulModel = require("./matkulModel");
+const matkulModel = require("./matakuliahModel");
 const dosenModel = require("./dosenModel");
 
 const perkuliahanModel = db.define(
