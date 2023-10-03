@@ -4,20 +4,20 @@ const {
   Register,
   Login,
   Logout,
-} = require("../controllers/UserController.js");
+} = require("../controllers/userController.js");
 const { verifyToken } = require("../middleware/VerifyToken.js");
-const { refreshToken } = require("../controllers/RefreshToken.js");
-const { getAllDosen, getDosenById } = require("../controllers/Dosen.js");
+const { refreshToken } = require("../controllers/refreshToken.js");
+const { getAllDosen, getDosenById } = require("../controllers/dosen.js");
 const {
   getAllPerkuliahan,
   getPerkuliahanByKelas,
   createPerkuliahan,
-} = require("../controllers/Perkuliahan.js");
+} = require("../controllers/perkuliahan.js");
 const {
   getAllMatkul,
   createMatkul,
   getMatkulById,
-} = require("../controllers/Matkul.js");
+} = require("../controllers/matkul.js");
 const router = express.Router();
 
 router.get("/api/users", verifyToken, getUsers);
