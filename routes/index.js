@@ -27,15 +27,15 @@ router.get("/api/token", refreshToken);
 router.delete("/api/logout", Logout);
 
 router.get("/api/dosen", getAllDosen);
-router.get("/api/dosen/:uuid", verifyToken, getDosenById);
+router.get("/api/dosen/:uuid", getDosenById);
 
-router.get("/api/matkul", verifyToken, getAllMatkul);
-router.get("/api/matkul/:kode_mk", verifyToken, getMatkulById);
+router.get("/api/matkul", getAllMatkul);
+router.get("/api/matkul/:kode_mk", getMatkulById);
 // router.post("/api/matkul", createMatkul);
 
-router.get("/api/perkuliahan", verifyToken, getAllPerkuliahan);
+router.get("/api/perkuliahan", getAllPerkuliahan);
 // router.post("/api/perkuliahan", createPerkuliahan);
-router.get("/api/perkuliahan/:kelas", verifyToken, getPerkuliahanByKelas);
+router.get("/api/perkuliahan/:kelas", getPerkuliahanByKelas);
 
 // router.post("/generatetokenexp", verifyToken, generateTokenExp);
 // router.post("/generatetoken", generateToken);
