@@ -31,8 +31,8 @@ router.get("/api/token", refreshToken);
 router.delete("/api/logout", Logout);
 
 router.get("/api/dosen", getAllDosen);
-router.get("/api/dosen/:uuid", getDosenById);
-router.get("/api/dosen/:nidn", getDosenByNidn);
+router.get("/api/dosen/id/:uuid", getDosenById);
+router.get("/api/dosen/nidn/:nidn", getDosenByNidn);
 
 router.get("/api/matkul", getAllMatkul);
 router.get("/api/matkul/:kode_mk", getMatkulById);
