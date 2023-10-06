@@ -7,7 +7,11 @@ const {
 } = require("../controllers/UserController");
 const { verifyToken } = require("../middleware/VerifyToken.js");
 const { refreshToken } = require("../controllers/RefreshToken.js");
-const { getAllDosen, getDosenById } = require("../controllers/Dosen.js");
+const {
+  getAllDosen,
+  getDosenById,
+  getDosenByNidn,
+} = require("../controllers/Dosen.js");
 const {
   getAllPerkuliahan,
   getPerkuliahanByKelas,
@@ -28,6 +32,7 @@ router.delete("/api/logout", Logout);
 
 router.get("/api/dosen", getAllDosen);
 router.get("/api/dosen/:uuid", getDosenById);
+router.get("/api/dosen/:nidn", getDosenByNidn);
 
 router.get("/api/matkul", getAllMatkul);
 router.get("/api/matkul/:kode_mk", getMatkulById);

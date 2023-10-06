@@ -37,3 +37,26 @@ exports.getDosenById = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+exports.getDosenByNidn = async (req, res) => {
+  try {
+    const nidn = req.params.nidn; // Ambil dosen dari parameter URL
+    const dataDosen = await dosenModel.findAll({
+      where: { nidn }, // Filter berdasarkan nidn
+      attributes: ["uuid", "nama_dosen", "nidn", "email", "telp", "linkwa"],
+    });
+
+    if (dataDosen.length === 0) {
+      return res.status(404).json({ msg: "Data Dosen tidak ditemukan." });
+    }
+
+    res.json({
+      status: "success",
+      message: `Data Dosen untuk dosen ${nidn} berhasil ditemukan.`,
+      data: dataDosen,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
